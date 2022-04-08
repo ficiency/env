@@ -1,0 +1,199 @@
+
+
+{% extends "layout.html" %} {% block content %}
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link href="http://cdn-na.infragistics.com/igniteui/2021.2/latest/css/themes/infragistics/infragistics.theme.css" rel="stylesheet" />
+        <link href="http://cdn-na.infragistics.com/igniteui/2021.2/latest/css/structure/infragistics.css" rel="stylesheet" />
+
+        <script src="http://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.8.3.js"></script>
+        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+        
+        <!--
+        <script src="http://cdn-na.infragistics.com/igniteui/2021.2/latest/js/infragistics.core.js"></script>
+        <script src="http://cdn-na.infragistics.com/igniteui/2021.2/latest/js/infragistics.lob.js"></script>
+        -->
+        <script src="https://cdn.ckeditor.com/ckeditor5/32.0.0/decoupled-document/ckeditor.js"></script>
+    </head>
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+        </symbol>
+        <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+        </symbol>
+        <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+        </symbol>
+    </svg>
+    <body>
+        <div class="container">
+            <div class="Panel">
+                <p id="paneltext"><span style="font-weight:bold; font-size: 24px;">MSE-T: Let´s be efficient</span></p>
+                <p class="question-content" id="paneltext"><strong>STEP 1.</strong> Enter your needed searches:
+                    <span class="tt" data-bs-placement="right" title="For example: What is modern physics?, history of modern physics, aplications of modern physics">
+                        <svg class="bi flex-shrink-0 me-2" width="18" height="18" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg></p>
+                    </span>
+                <form method="post" action="http://localhost:5000/mse-t"> 
+                    <div class="form-floating">
+                        <textarea class="form-control" name = "query" value="doccontent" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px;"></textarea>
+                        <label for="floatingTextarea2">Separated by comas...</label>
+                    </div>
+                    <p><span style="color: red; font-size: 14px;">{{no_content}}</span></p>
+                    <p class="pages-question" id="paneltext"><strong>STEP 2.</strong> How many pages? <span class="tt" data-bs-placement="right" title="Only select one blue box or the text box. If already elected both, please reload the page.">
+                        <svg class="bi flex-shrink-0 me-2" width="18" height="18" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
+                    </span></p>
+                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                            <input type="radio" class="btn-check" name="btnradio" value="1" id="btnradio1" autocomplete="off">
+                            <label class="btn btn-primary" for="btnradio1">1</label>
+                          
+                            <input type="radio" class="btn-check" name="btnradio" value = "3" id="btnradio3" autocomplete="off">
+                            <label class="btn btn-primary" for="btnradio3">2</label>
+                          
+                            <input type="radio" class="btn-check" name="btnradio" value="5" id="btnradio5" autocomplete="off">
+                            <label class="btn btn-primary" for="btnradio5">3</label>
+
+                            <input type="radio" class="btn-check" name="btnradio" value="7" id="btnradio7" autocomplete="off">
+                            <label class="btn btn-primary" for="btnradio7">4</label>
+
+                            <input type="radio" class="btn-check" name="btnradio" value="9" id="btnradio9" autocomplete="off">
+                            <label class="btn btn-primary" for="btnradio9">5</label>
+                            
+                            <input type="numbers" class="form-control" name="pages" placeholder="More? max: 10">
+                                                       
+                        </div>
+                    </div>
+                    <p><span style="color: red; font-size: 14px;">{{pages_problem}}</span></p>
+                    <p class="question" id="paneltext"><strong>STEP 3.</strong> Language content?</p>
+                    <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                        <input type="checkbox" class="btn-check" id="english" name = "engl" value="en"autocomplete="off">
+                        <label class="btn btn-primary" for="english">English</label>
+                      
+                        <input type="checkbox" class="btn-check" id="spanish" name = "espa" value="es" autocomplete="off">
+                        <label class="btn btn-primary" for="spanish">Spanish</label>
+                    </div>
+                    <p><span style="color: red; font-size: 14px;">{{lang_problem}}</span></p>
+                    <p class="check-question" id="paneltext"><strong>STEP 4.</strong> To add: (Optional)</p>
+                    <div class="checkboxes">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" name="br"id="flexSwitchCheckChecked" checked>
+                            <label id="paneltext" class="form-check-label" for="flexSwitchCheckChecked">Bibliographic references</label>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" name="pt"id="flexSwitchCheckDefault" disabled>
+                            <label id="paneltext" class="form-check-label" for="flexSwitchCheckDefault">Conclusion <strong><span>(developing)</span></strong></label>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" name="ii" id="flexSwitchCheckDefault" disabled>
+                            <label id="paneltext" class="form-check-label" for="flexSwitchCheckDefault">Images <strong><span>(developing)</span></strong></label>
+                        </div>
+                    </div>
+                    <p class="go-phase" id="paneltext"><strong>STEP 5.</strong> Inite your document:</p>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary" name="action" value="Go" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Go
+                        </button>
+                        <p style="color: white;"><strong>{{time_remaining}}{{tickets}}</strong></p>
+                    </div>
+                      
+                      <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Warning</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="alert alert-primary d-flex align-items-center" role="alert" contenteditable="false">
+                                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
+                                    <div>
+                                        The content that will be displayed below is not owned by me at all.
+                                    </div>
+                                </div>
+                                <div class="alert alert-warning d-flex align-items-center" role="alert">
+                                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                                    <div>
+                                        If you are the owner of the content shown, and you want it not to appear on this website again, contact this email as soon as possible. <span>@ficiency</span>, 
+                                        send us a message through our <a href="localhost:5000/contact"><strong>contact us</strong></a> section.
+                                    </div>
+                                </div>
+                                <div class="alert alert-success d-flex align-items-center" role="alert">
+                                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+                                    <div>
+                                        Because we are still perfecting our tools, please check the text and spelling carefully.
+                                    </div>
+                                </div> 
+                            </div>
+                            <div class="modal-footer">
+                                <div class="d-flex align-items-center">
+                                    <strong>Loading...</strong>
+                                    <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+                                </div> 
+                            </div>
+                          </div>
+                        </div>            
+                    </div>
+                </form>
+            </div>
+            <!--<p class="check-phase"><strong>STEP 6.</strong> Review and edit displayed content:</p>-->
+            <br>
+            <div id="toolbar-content">
+                <div id="toolbar-container"></div>
+                <input type="text" value="{{result}}" id="myInput" style="display: none;">
+                    <div id="editor">
+                        <p style="text-align: center;" contenteditable="false"><strong>{{accuracy}}</strong></p>
+                        <p style="text-align: center;" contenteditable="false"><strong> {{beaft_doc}}</strong></p>
+                        <p style="text-align: center;" contenteditable="false"><strong> {{time_remaining}}</strong></p>
+                        {{result}}
+                        <br>
+                        <br>
+                        <strong>{{links}}</strong>
+                    </div>
+                    <script>
+                        DecoupledEditor
+                            .create( document.querySelector( '#editor' ) )
+                            .then( editor => {
+                                const toolbarContainer = document.querySelector( '#toolbar-container' );
+
+                                toolbarContainer.appendChild( editor.ui.view.toolbar.element );
+                            } )
+                            .catch( error => {
+                                console.error( error );
+                            } );
+                    </script>                
+            </div>
+                <div class="btn-group" role="group" id='finish-document' aria-label="Basic radio toggle button group" style="outline: 1px solid black; border-radius: 5px;">
+                    <button type="button" onclick="myFunction()" class="btn btn-success">Copy to clipboard!</button>
+                    
+                    <script>
+                        function myFunction() {
+                          /* Get the text field */
+                          var copyText = document.getElementById("myInput");
+                        
+                          /* Select the text field */
+                          copyText.select();
+                          copyText.setSelectionRange(0, 99999); /* For mobile devices */
+                        
+                          /* Copy the text inside the text field */
+                          navigator.clipboard.writeText(copyText.value);
+                        }
+                    </script>
+                </div>
+            </form>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script>
+            const tooltips = document.querySelectorAll('.tt')
+            tooltips.forEach(t => {
+                new bootstrap.Tooltip(t)
+            })
+        </script>
+    </body>
+</html>
+
+
+{% endblock %}
