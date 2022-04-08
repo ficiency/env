@@ -165,4 +165,5 @@ def mode_page():
 
     return render_template("mse-t.html", result = result, beaft_doc = beaft_doc, accuracy = accuracy, links = links_user, tickets = tickets)
 
-app.run()
+if __name__ == '__main__':
+    app.run(host = "0.0.0.0", port = 5000)
