@@ -6,7 +6,7 @@ from googletrans import Translator
 from processing import calculate_mode
 import time
 import datetime, pytz
-
+print("Hola")
 app = Flask(__name__)
 app.config["DEBUG"] = True
 app.config["SECRET_KEY"] = "asdzxcfghvbnasfgraarasd"
